@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Registro</title>
+</head>
+
+<body>
+    <div class="main-login">
+        <div class="left-login">
+            <h1>BEM-VINDO<br>Crie sua conta</h1>
+            <img src="equipe.svg" class="left-login-image" alt="Team animation">
+        </div>
+        <div class="right-login">
+            <div class="card-login">
+                <h1>REGISTRO</h1>
+
+                <div class="textfield">
+                    <label for="usuario">Usuário</label>
+                    <input type="text" id="registerUsername" name="usuario" placeholder="Usuário">
+                </div>
+
+                <div class="textfield">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="registerPassword" name="senha" placeholder="Senha">
+                </div>
+                
+                <p id="statusMessage" class="status-message"></p>
+                <button id="registerBtn" class="btn-login">Registrar</button>
+
+                <div style="margin-top: 20px; text-align: center;">
+                    <a href="index.html" style="color: #f2f2f2; text-decoration: none; font-size: 14px;">Voltar para login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const existingToken = localStorage.getItem('authToken');
+        if (existingToken) {
+            window.location.href = 'dashboard.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const registerBtn = document.getElementById('registerBtn');
+            const registerUsernameInput = document.getElementById('registerUsername');
+            const registerPasswordInput = document.getElementById('registerPassword');
+            const statusMessage = document.getElementById('statusMessage');
+            
+            // Enable enter to login without press the button
+            registerPasswordInput.addEventListener('keypress', (event) => {
+                if (event.key == 'Enter') {
+                    event.preventDefault(); // Avoid reloading page
+                    registerBtn.click(); // Press login button when press Enter
+                }
+            })
+
+            registerBtn.addEventListener('click', async (event) => {
+                event.preventDefault();
+
+                statusMessage.textContent = 'Processando...';
+                statusMessage.className = 'status-message';
+
+                const requestBody = {
+                    username: registerUsernameInput.value,
+                    password: registerPasswordInput.value
+                };
+
+                try {
+                    const response = await fetch('http://127.0.0.1:5000/api/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-type': 'application/json'
+                        },
+                        body: JSON.stringify(requestBody)
+                    });
+
+                    const responseData = await response.json();
+
+                    if (response.ok) {
+                        statusMessage.textContent = 'Conta criada! Redirecionando para página de login...';
+                        statusMessage.className = 'status-message sucess-text';
+
+                        setTimeout(() => {
+                            window.location.href = 'index.html';
+                        }, 1500);
+                    } else{
+                        statusMessage.textContent = responseData.error;
+                        statusMessage.className = 'status-message error-text';
+                    }
+                } catch (error){
+                    console.error('Connection error: ', error);
+                    statusMessage.textContent = 'Falha ao conectar com o servidor.';
+                    statusMessage,className = 'status-message error-text';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

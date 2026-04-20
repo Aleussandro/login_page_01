@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;800&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+body * {
+    box-sizing: border-box;
+}
+
+.main-login {
+    width: 100vw;
+    height: 100vh;
+    background: #201b2c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-login {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.left-login > h1 {
+    color: #ecec13;
+    font-size: 3vw;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.left-login-image {
+    width: 35vw;
+}
+
+.right-login {
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background: #2f2841;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #00000056;
+}
+
+.card-login > h1 {
+    color: #ffff00;
+    font-weight: 800;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.textfield {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.textfield > input {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #514869;
+    color: #d9d9d9;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+}
+
+.textfield > label {
+    color: #d9d9d9;
+    margin-bottom: 10px;
+}
+
+.textfield > input::placeholder {
+    color: #999999;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 16px 0px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 7px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #333300;
+    background: #ffff33;
+    cursor: pointer;
+    box-shadow: 0px 1px 30px 1px #424203;
+}
+
+.back-link {
+    color: #f2f2f2;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.back-link:hover {
+    color: #ffff33;
+    text-decoration: underline;
+}
+
+.status-message {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    min-height: 20px;
+}
+
+.error-text {
+    color: #ff4c4c
+}
+
+.sucess-text{
+    color: #4caf50;
+}
+
+.dashboard-container {
+    background: #2f2841;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 40px #00000056;
+    width: 80%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    margin: 40px auto; /* Centraliza a caixa roxa na tela */
+}
+
+.header-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #514869;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.dashboard-container h1 {
+    color: #ffff00;
+    margin: 0;
+    font-size: 24px;
+}
+
+.logout-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #ff4c4c;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.input-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.input-area textarea {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #514869;
+    color: #d9d9d9;
+    box-sizing: border-box;
+    outline: none;
+    resize: vertical;
+    min-height: 80px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.input-area textarea::placeholder {
+    color: #999999;
+}
+
+.save-btn {
+    align-self: flex-end;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 7px;
+    background: #ffff33;
+    color: #333300;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.notes-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.note-card {
+    background: #514869;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.note-date {
+    font-size: 12px;
+    color: #b3b3b3;
+}
+
+.btn-group {
+    display: flex;
+    gap: 5px;
+}
+
+.edit-btn {
+    background: #4ca6ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.edit-btn:hover {
+    background: #3388ff;
+}
+
+.delete-btn {
+    background: #ff4c4c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.delete-btn:hover {
+    background: #e60000;
+}
+
+.note-content {
+    margin: 0;
+    line-height: 1.4;
+    margin-top: 5px;
+}
+
+.dashboard-bg {
+    margin: 0;
+    font-family: 'Noto Sans', sans-serif;
+    background: #201b2c;
+    color: #d9d9d9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.search-area {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+#searchInput{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 15px;
+    background: #413859;
+    color: #d9d9d9;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+#searchInput::placeholder {
+    color: #999999;
+}
+
+@media only screen and (max-width: 950px){
+    .card-login {
+        width: 85%;
+    }
+    .left-login-image {
+        width: 45vw;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .main-login {
+        flex-direction: column;
+    }
+    .left-login {
+        display: none;
+    }
+    .right-login {
+        width: 100%;
+        height: 100vh;
+    }
+    .card-login {
+        width: 90%;
+    }
+}
