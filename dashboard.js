@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         
     // Fetch user data
     try {
-        const response = await fetch('http://127.0.0.1:5000/api/protected-data', {
+        const response = await fetch('https://api-login-page-g9da.onrender.com/api/protected-data', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Function to delete notes
     const deleteNote = async (noteId) => {
         try{
-            const response = await fetch(`http://127.0.0.1:5000/api/notes/${noteId}`, {
+            const response = await fetch(`https://api-login-page-g9da.onrender.com/api/notes/${noteId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Function to load notes
     const loadNotes = async () => {
         try{
-            const response = await fetch('http://127.0.0.1:5000/api/notes', {
+            const response = await fetch('https://api-login-page-g9da.onrender.com/api/notes', {
                 method: 'GET',
                 headers: { 'Authorization': `Bearer ${token}`}
             });
@@ -135,11 +135,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (!content) return;
 
         try {
-            let url = 'http://127.0.0.1:5000/api/notes';
+            let url = 'https://api-login-page-g9da.onrender.com/api/notes';
             let method = 'POST';
 
             if (currentEditId) {
-                url = `http://127.0.0.1:5000/api/notes/${currentEditId}`;
+                url = `https://api-login-page-g9da.onrender.com/api/notes/${currentEditId}`;
                 method = 'PUT';
             }
                 
