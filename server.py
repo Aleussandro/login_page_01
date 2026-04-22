@@ -45,7 +45,10 @@ def register_user():
         connection.commit()
         return jsonify({"message": "Usuário criado com sucesso!"}), 201
     except mysql.connector.Error as err:
-        return jsonify({"error": str(err)}), 400
+        if err.error == 1062: # 1062(Usuário duplicado)
+            return jsonify({"error": "Este usuário já existe. Tente outro."}), 400
+
+        return jsonify({"error": "Falha ao conectar com o banco de dados."}), 500
     finally:
         cursor.close()
         connection.close()
