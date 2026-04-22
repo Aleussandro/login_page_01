@@ -1,21 +1,25 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS 
 from werkzeug.security import check_password_hash, generate_password_hash
+from dotenv import load_dotenv
+import os
 import mysql.connector
 import jwt
 import datetime
 
+load_dotenv() 
+
 app = Flask(__name__)
 CORS(app)
 
-SECRET_KEY = "super_secret_key_change_this_later"
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 def get_db_connection():
     connection = mysql.connector.connect(
         host='mysql-primeiro-crud-alessandrow13-2639.g.aivencloud.com',
         port='28460',
         user='avnadmin',
-        password='AVNS_LVJx2DIERSBMgG3aGyZ',
+        password=os.getenv('DB_PASSWORD'),
         database='app_database',
         ssl_ca='ca.pem'
     )
