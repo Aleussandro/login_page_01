@@ -128,6 +128,9 @@ def manage_notes():
         if not note_content:
             return jsonify({"error": "Note cannot be empty"}), 400
         
+        connection = get_db_connection()
+        cursor = connection.cursor(dictionary=True)
+    
         try:
             query = "INSERT INTO notes (username, content) VALUES (%s, %s)"
             cursor.execute(query, (current_username, note_content))
