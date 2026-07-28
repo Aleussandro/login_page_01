@@ -1,3 +1,7 @@
 ca.pem
 .env
 __pycache__/
+
+
+# Tests
+tests.py

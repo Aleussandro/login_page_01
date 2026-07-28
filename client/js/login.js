@@ -1,0 +1,61 @@
+const existingToken = localStorage.getItem('authToken');
+        if (existingToken) {
+            window.location.href = 'dashboard.html';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginBtn = document.getElementById('loginBtn');
+            const usernameInput = document.getElementById('usernameInput');
+            const passwordInput = document.getElementById('passwordInput');
+            const statusMessage = document.getElementById('statusMessage');
+
+            // Enable enter to login without press the button
+            passwordInput.addEventListener('keypress', (event) => {
+                if (event.key == 'Enter') {
+                    event.preventDefault(); // Avoid reloading page
+                    loginBtn.click(); // Press login button when press Enter
+                }
+            })
+
+            loginBtn.addEventListener('click', async (event) => {
+                event.preventDefault();
+
+                statusMessage.textContent = 'Processando...';
+                statusMessage.className = 'status-message';
+
+                const requestBody = {
+                    username: usernameInput.value.trim(), // trim is used to cut the spaces
+                    password: passwordInput.value // Never put trim in passwords
+                };
+
+                try {
+                    const response = await fetch('https://api-login-page-g9da.onrender.com/api/login', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': "application/json"
+                        },
+                        body: JSON.stringify(requestBody)
+                    });
+
+                    const responseData = await response.json();
+
+                    if (response.ok){
+                        statusMessage.textContent = 'Logado com sucesso! Redirecionando...';
+                        statusMessage.className = 'status-message sucess-text';
+                        localStorage.setItem('authToken', responseData.token);
+
+                        setTimeout(() => {
+                            window.location.href = 'dashboard.html';
+                        }, 1000);
+                    }
+                    else{
+                        statusMessage.textContent = responseData.error;
+                        statusMessage.className = 'status-message error-text';
+                    }
+                } catch(error){
+                    console.error('Connection error: ', error);
+                    statusMessage.textContent = 'Falha ao conectar com o servidor.';
+                    statusMessage.className = 'status-message error-text';
+                }
+            });
+        });
