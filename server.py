@@ -21,7 +21,7 @@ def get_db_connection():
         user='45x8yKXmULehJQ6.root',
         password=os.getenv('DB_PASSWORD'),
         database='test',
-        ssl_ca='isrgrootx1.pem',
+        ssl_ca='ca.pem',
         ssl_verify_cert=True,
         ssl_verify_identity=True
     )
