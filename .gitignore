@@ -1,5 +1,8 @@
 ca.pem
 .env
+
+# Cache
+.pytest_cache
 __pycache__/
 
 # Tests
