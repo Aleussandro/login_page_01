@@ -1,7 +1,7 @@
 ca.pem
 .env
 __pycache__/
-isrgrootx1.pem
+isrgootx1.pem
 
 # Tests
 tests.py
