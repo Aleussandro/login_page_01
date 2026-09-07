@@ -16,12 +16,14 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 def get_db_connection():
     connection = mysql.connector.connect(
-        host='mysql-primeiro-crud-alessandrow13-2639.g.aivencloud.com',
-        port='28460',
-        user='avnadmin',
+        host='gateway01.us-east-1.prod.aws.tidbcloud.com',
+        port='4000',
+        user='45x8yKXmULehJQ6.root',
         password=os.getenv('DB_PASSWORD'),
-        database='app_database',
-        ssl_ca='ca.pem'
+        database='test',
+        ssl_ca='isrgrootx1.pem',
+        ssl_verify_cert=True,
+        ssl_verify_identity=True
     )
     return connection
 
