@@ -16,11 +16,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 def get_db_connection():
     connection = mysql.connector.connect(
-        host='gateway01.us-east-1.prod.aws.tidbcloud.com',
-        port='4000',
-        user='45x8yKXmULehJQ6.root',
+        host=os.getenv('DB_HOST'),
+        port=os.getenv('DB_PORT'),
+        user=os.getenv('DB_USER'),
         password=os.getenv('DB_PASSWORD'),
-        database='test',
+        database=os.getenv('DB_NAME'),
         ssl_ca='ca.pem',
         ssl_verify_cert=True,
         ssl_verify_identity=True
@@ -129,10 +129,7 @@ def manage_notes():
 
         if not note_content:
             return jsonify({"error": "Note cannot be empty"}), 400
-        
-        connection = get_db_connection()
-        cursor = connection.cursor(dictionary=True)
-    
+
         try:
             query = "INSERT INTO notes (username, content) VALUES (%s, %s)"
             cursor.execute(query, (current_username, note_content))

@@ -31,6 +31,7 @@ O projeto começou como uma página de login e foi posteriormente evoluído para
 * mysql-connector-python
 * PyJWT
 * python-dotenv
+* gunicorn
 * Werkzeug
 * Pytest
 

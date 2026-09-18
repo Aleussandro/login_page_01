@@ -2,8 +2,9 @@ ca.pem
 .env
 
 # Cache
-.pytest_cache
+.pytest_cache/
 __pycache__/
 
 # Tests
+test_server.py
 tests.py
