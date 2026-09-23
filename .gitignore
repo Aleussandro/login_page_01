@@ -6,5 +6,4 @@ ca.pem
 __pycache__/
 
 # Tests
-test_server.py
 tests.py
